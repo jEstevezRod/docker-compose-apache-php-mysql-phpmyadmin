@@ -77,6 +77,13 @@ To change the domain name server to the project need to change the **ServerName*
 ```
  vim /etc/hosts
  ```
+If you want access to PhpMyAdmin, go to your domain pointing to port 8080:
+
+>   http://[YOUR_DOMAIN]:8080
+
+by default you can enter doing:
+
+>   http://template.me:8080
 
 ## Troubleshooting
 
