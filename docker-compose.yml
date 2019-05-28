@@ -1,0 +1,32 @@
+version: "3"
+
+services: 
+  php7-apache2-xdebug:
+    build: ./server
+    container_name: php7.3-apache2
+    ports:
+      - '80:80'
+    volumes: 
+      - $PWD/htdocs:/var/www/html
+  
+  database:
+    image: mysql:5.7
+    restart: always
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 'password'
+    volumes:
+      - ./db:/var/lib/mysql
+    expose:
+      - '3306'
+    ports:
+      - '3306:3306'
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    ports:
+      - '8080:80'
+    environment:
+      MYSQL_ROOT_PASSWORD: 'password'
+      PMA_HOST: 'database'
